@@ -38,10 +38,13 @@ func TestSimple(t *testing.T) {
 	if msg.Channel != "" {
 		t.Errorf("Expected channel to be empty but found %q", msg.Channel)
 	}
+	if msg.UserName != "" {
+		t.Errorf("Expected username to be empty but found %q", msg.UserName)
+	}
 	if msg.IconURL != "" {
-		t.Errorf("Expected channel to be empty but found %q", msg.IconURL)
+		t.Errorf("Expected icon_url to be empty but found %q", msg.IconURL)
 	}
 	if msg.IconEmoji != "" {
-		t.Errorf("Expected channel to be empty but found %q", msg.IconEmoji)
+		t.Errorf("Expected icon_emoji to be empty but found %q", msg.IconEmoji)
 	}
 }
