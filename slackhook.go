@@ -15,6 +15,7 @@ import (
 type Message struct {
 	Text      string `json:"text"`
 	Channel   string `json:"channel,omitempty"`
+	Username  string `json:"username,omitempty"`
 	IconURL   string `json:"icon_url,omitempty"`
 	IconEmoji string `json:"icon_emoji,omitempty"`
 }
