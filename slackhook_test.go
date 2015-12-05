@@ -44,4 +44,7 @@ func TestSimple(t *testing.T) {
 	if msg.IconEmoji != "" {
 		t.Errorf("Expected channel to be empty but found %q", msg.IconEmoji)
 	}
+	if msg.Username != "" {
+		t.Errorf("Expected channel to be empty but found %q", msg.Username)
+	}
 }
