@@ -17,6 +17,7 @@ type Message struct {
 	Channel   string `json:"channel,omitempty"`
 	IconURL   string `json:"icon_url,omitempty"`
 	IconEmoji string `json:"icon_emoji,omitempty"`
+	Username  string `json:"username,omitempty"`
 }
 
 // Poster interface is the methods of http.Client required by Client to ease
