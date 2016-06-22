@@ -13,11 +13,43 @@ import (
 //
 // See https://api.slack.com/incoming-webhooks
 type Message struct {
-	Text      string `json:"text"`
-	Channel   string `json:"channel,omitempty"`
-	UserName  string `json:"username,omitempty"`
-	IconURL   string `json:"icon_url,omitempty"`
-	IconEmoji string `json:"icon_emoji,omitempty"`
+	Text        string        `json:"text"`
+	Channel     string        `json:"channel,omitempty"`
+	UserName    string        `json:"username,omitempty"`
+	IconURL     string        `json:"icon_url,omitempty"`
+	IconEmoji   string        `json:"icon_emoji,omitempty"`
+	Attachments []*Attachment `json:"attachments,omitempty"`
+}
+
+// Attachments provide rich-formatting to messages
+//
+// See https://api.slack.com/docs/attachments
+type Attachment struct {
+	Fallback   string  `json:"fallback,omitempty"` // plain text summary
+	Color      string  `json:"color,omitempty"`    // {good|warning|danger|hex}
+	AuthorName string  `json:"author_name,omitempty"`
+	AuthorLink string  `json:"author_link,omitempty"`
+	AuthorIcon string  `json:"author_icon,omitempty"`
+	Title      string  `json:"title,omitempty"` // larger, bold text at top of attachment
+	TitleLink  string  `json:"title_link,omitempty"`
+	Text       string  `json:"text,omitempty"`
+	Fields     []Field `json:"fields,omitempty"`
+	ImageURL   string  `json:"image_url,omitempty"`
+	ThumbURL   string  `json:"thumb_url,omitempty"`
+	FooterIcon string  `json:"footer,omitempty"`
+	Footer     string  `json:"footer_icon,omitempty"`
+	Timestamp  int     `json:"ts,omitempty"` // Unix timestamp
+}
+
+type Field struct {
+	Title string `json:"title,omitempty"`
+	Value string `json:"value,omitempty"`
+	Short string `json:"short,omitempty"`
+}
+
+// Add attachments to a Slack Message
+func (m *Message) AddAttachment(a *Attachment) {
+	m.Attachments = append(m.Attachments, a)
 }
 
 // Poster interface is the methods of http.Client required by Client to ease
