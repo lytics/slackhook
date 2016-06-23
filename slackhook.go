@@ -44,7 +44,7 @@ type Attachment struct {
 type Field struct {
 	Title string `json:"title,omitempty"`
 	Value string `json:"value,omitempty"`
-	Short string `json:"short,omitempty"`
+	Short bool   `json:"short,omitempty"`
 }
 
 // Add attachments to a Slack Message
