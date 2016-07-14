@@ -19,26 +19,28 @@ type Message struct {
 	IconURL     string        `json:"icon_url,omitempty"`
 	IconEmoji   string        `json:"icon_emoji,omitempty"`
 	Attachments []*Attachment `json:"attachments,omitempty"`
+	Markdown    *bool         `json:"mrkdwn,omitempty"` // used to disable markdown for the message
 }
 
 // Attachments provide rich-formatting to messages
 //
 // See https://api.slack.com/docs/attachments
 type Attachment struct {
-	Fallback   string  `json:"fallback,omitempty"` // plain text summary
-	Color      string  `json:"color,omitempty"`    // {good|warning|danger|hex}
-	AuthorName string  `json:"author_name,omitempty"`
-	AuthorLink string  `json:"author_link,omitempty"`
-	AuthorIcon string  `json:"author_icon,omitempty"`
-	Title      string  `json:"title,omitempty"` // larger, bold text at top of attachment
-	TitleLink  string  `json:"title_link,omitempty"`
-	Text       string  `json:"text,omitempty"`
-	Fields     []Field `json:"fields,omitempty"`
-	ImageURL   string  `json:"image_url,omitempty"`
-	ThumbURL   string  `json:"thumb_url,omitempty"`
-	FooterIcon string  `json:"footer,omitempty"`
-	Footer     string  `json:"footer_icon,omitempty"`
-	Timestamp  int     `json:"ts,omitempty"` // Unix timestamp
+	Fallback   string   `json:"fallback,omitempty"` // plain text summary
+	Color      string   `json:"color,omitempty"`    // {good|warning|danger|hex}
+	AuthorName string   `json:"author_name,omitempty"`
+	AuthorLink string   `json:"author_link,omitempty"`
+	AuthorIcon string   `json:"author_icon,omitempty"`
+	Title      string   `json:"title,omitempty"` // larger, bold text at top of attachment
+	TitleLink  string   `json:"title_link,omitempty"`
+	Text       string   `json:"text,omitempty"`
+	Fields     []Field  `json:"fields,omitempty"`
+	ImageURL   string   `json:"image_url,omitempty"`
+	ThumbURL   string   `json:"thumb_url,omitempty"`
+	FooterIcon string   `json:"footer,omitempty"`
+	Footer     string   `json:"footer_icon,omitempty"`
+	Timestamp  int      `json:"ts,omitempty"`        // Unix timestamp
+	MarkdownIn []string `json:"mrkdwn_in,omitempty"` // field names to apply markdown formatting to
 }
 
 type Field struct {
